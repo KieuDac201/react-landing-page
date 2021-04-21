@@ -1,0 +1,634 @@
+@import './sass/breakpoint';
+
+$light-blue-color: #5ca9fb;
+$dark-blue-color: #6372ff;
+$white-color: #fff;
+$black-color: #000;
+$grey-color: #f6f6f6;
+$text-color: #555;
+$text-color-light: rgba(255,255,255,.75);
+$heading-color: #333;
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    overflow-x: hidden;
+}
+body{
+    font-family: 'Raleway', sans-serif;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+img{
+    max-width: 100%;
+}
+section{
+    padding: 110px 0;
+}
+p,li{
+    font-size: 15px;
+    color: $text-color;
+}
+.section-title{
+    display: inline-block;
+    font-size: 36px;
+    color: $heading-color;
+    font-weight: 800;
+    position: relative;
+    @include screen(lg){
+        font-size: 30px;
+    }
+    @include screen(sm){
+        font-size: 25px;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(to right ,$light-blue-color, $dark-blue-color);
+        height: 4px;
+        width: 60px;
+    }
+}
+/* ================= NAVBAR ================= */
+nav{
+    background-color: $white-color;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    .navbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        &__logo{
+            font-size: 24px;
+            font-weight: 700;
+            color: $heading-color;
+            text-transform: uppercase;
+            z-index: 11;
+            @include screen(xl){
+                font-size: 22px;
+            }
+            @include screen(sm){
+                font-size: 18px;
+            }
+        }
+        &__menu{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            flex-wrap: wrap;
+            position: relative;
+            @include screen(lg){
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: $white-color;
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start;
+                padding: 60px 0 10px 30px;
+                z-index: 9;
+                transform: scaleY(0);
+                transition: 0.2s ease ;
+                transform-origin: top;
+                opacity: 0;
+                &.active{
+                    transform: scaleY(1);
+                    opacity: 1;
+                }
+            }
+        }
+        &__icon{
+            display: none;
+            font-size: 21px;
+            cursor: pointer;
+            z-index: 11;
+            @include screen(lg){
+                display: block;
+            }
+        }
+        &__link{
+            color: $text-color;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-left: 45px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            cursor: pointer;
+            position: relative;
+            @include screen(xl){
+                margin-left: 25px;
+            }
+            @include screen(lg){
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+            &:hover{
+                color: $dark-blue-color;
+            }
+            &::before{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: -10px;
+                transform-origin: left;
+                width: 0;
+                background-color: $dark-blue-color;
+                transition: 0.3s linear;
+            }
+            &.active{
+                color: $dark-blue-color;
+                
+            }
+            &.active::before, &:hover::before{
+                width: 100%;
+            }
+        }
+    }
+}
+
+/* ================= HEADER ================= */
+header{
+    background: url(./img/intro-bg.jpg) center no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $black-color;
+        opacity: 0.25;
+    }
+    .header{
+        padding: 300px 0 200px 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        &__content{
+            max-width: 750px;
+            padding: 0 30px;
+        }
+        &__title{
+            color: $white-color;
+            font-size: 82px;
+            font-weight: 700;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+            @include screen(lg){
+                font-size: 50px;
+            }
+            @include screen(sm){
+                font-size: 40px;
+            }
+        }
+        &__paragraph{
+            font-size: 22px;
+            color: $white-color;
+            font-weight: 400;
+            margin: 10px 0  50px 0;
+            @include screen(lg){
+                font-size: 18px;
+            }
+        }
+        &__btn{
+            display: inline-block;
+            padding: 17px 35px;
+            background: linear-gradient(to right ,$light-blue-color, $dark-blue-color);
+            text-decoration: none;
+            color: $white-color;
+            text-transform: uppercase;
+            font-size: 16px;
+            border-radius: 999px;
+            transition: 0.2s ease;
+            @include screen(sm){
+                padding: 12px 30px;
+            }
+            &:hover{
+                transform: scale(0.95);
+
+            }
+        }
+    }
+}
+/* ================= FEATURE ================= */
+.feature{
+    background-color: $grey-color;
+    text-align: center;
+    &__list{
+        display: grid;
+        margin-top: 105px;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px;
+        
+        @include screen(lg){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include screen(lg){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item-icon{
+        padding: 30px;
+        display: inline-block;
+        border-radius: 50%;
+        background: linear-gradient(to left ,$light-blue-color, $dark-blue-color);
+        color: $white-color;
+        font-size: 38px;
+        margin-bottom: 25px;
+        box-shadow: 2px 5px 10px rgba(0,0,0,0.1);
+    }
+    &__item-title{
+        font-size: 20px;
+        font-weight: 600;
+        margin: 20px 0;
+    }
+    &__item-paragraph{
+        font-size: 15px;
+        color: $text-color;
+    }
+}
+/* ================= ABOUT ================= */
+.about{
+    background-color: $white-color;
+    .section-title{
+
+    }
+    .section-title::before{
+        left: 0;
+        transform: translateX(0);
+    }
+    &__container{
+        display: flex;
+        @include screen(md){
+            flex-direction: column;
+        }
+    }
+    &__img{
+        width: 50%;
+        padding-right: 55px;
+        img{
+            width: 100%;
+        }
+        @include screen(md){
+            width: 100%;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+    }
+    &__content{
+        width: 50%;
+        @include screen(md){
+            width: 100%;
+        }
+    }
+    &__paragraph{
+        margin: 40px 0 30px 0;
+        line-height: 1.5;
+    }
+    &__choices{
+        &-title{
+            font-size: 22px;
+            font-weight: 600;
+            color: $heading-color;
+            margin-bottom: 25px;
+        }
+        &-list{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            @include screen(sm){
+                grid-template-columns: 1fr;
+            }
+        }
+        &-item{
+            list-style: none;
+            margin-bottom: 10px;
+            i{
+                color: $dark-blue-color;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+/* ================= SERVICES ================= */
+.services{
+    background: linear-gradient(to left ,$light-blue-color , $dark-blue-color);
+    text-align: center;
+    .section-title{
+        color: $white-color;
+        &::before{
+            background: $text-color-light;
+        }
+    }
+    &__paragraph{
+        color: $text-color-light;
+        font-size: 18px;
+        margin-top: 35px;
+    }
+    &__list{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 25px;
+        margin-top: 60px;
+        @include screen(lg){
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+        }
+        @include screen(lg){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item{
+        margin-bottom: 20px;
+        &-icon{
+            padding: 40px;
+            background: linear-gradient(to left ,$light-blue-color , $dark-blue-color);
+            border-radius: 50%;
+            font-size: 40px;
+            color: $white-color;
+            display: inline-block;
+            box-shadow: 3px 3px 15px rgba(0,0,0,0.1);
+        }
+        &-title{
+            font-size: 20px;
+            color: $white-color;
+            font-weight: 500;
+            margin: 25px 0 20px 0;
+        }
+        &-paragraph{
+            color: $text-color-light;
+        }
+    }
+    
+}
+/* ================= GALLERY ================= */
+.gallery{
+    background-color: $white-color;
+    text-align: center;
+    &__desc{
+        margin-top: 30px;
+        margin-bottom: 80px;
+        font-size: 18px;
+        color: $text-color;
+    }
+    &__list{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+        @include screen(lg){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include screen(lg){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item{
+        position: relative;
+        &::before, &::after{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: 0.2s ease-in-out;
+            opacity: 0;
+        }
+        &::before{
+            content: '';
+            background: linear-gradient(to right ,$light-blue-color , $dark-blue-color);
+        }
+        &::after{
+            content: attr(data-text);
+            z-index: 1;
+            transform: translateY(30px);
+            align-items: center;
+            justify-content: center;
+            color: $white-color;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: 500;
+            display: flex;
+        }
+        &:hover::before{
+            opacity: 0.7;
+        }
+        &:hover::after{
+            opacity: 1;
+            transform: translateY(0);
+
+        }
+    }
+}
+/* ================= TESTIMONIALS ================= */
+.testimonials{
+    background-color: $grey-color;
+    text-align: center;
+    &__list{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 40px;
+        margin-top: 80px;
+        @include screen(lg){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include screen(lg){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        &-picture{
+            img{
+                width: 270px;
+                border-radius: 50%;
+            }
+        }
+        &-text{
+            padding-left: 15px;
+            p{
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            h5{
+                font-size: 15px;
+                color: $text-color;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+/* ================= TEAM ================= */
+.team{
+    background-color: $white-color;
+    text-align: center;
+    &__desc{
+        margin-top: 30px;
+        font-size: 18px;
+    }
+    &__list{
+        margin-top: 80px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 30px;
+        @include screen(lg){
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include screen(lg){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__item{
+        &-name{
+            font-size: 18px;
+            color: $heading-color;
+            font-weight: 600;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        &-position{
+            font-size: 15px;
+            color: $text-color;
+        }
+    }
+}
+
+/* ================= CONTACT ================= */
+.contact{
+    background: linear-gradient(to left ,$light-blue-color , $dark-blue-color);
+    .section-title{
+        color: $grey-color;
+        &::before{
+            background: rgba(255,255,255,.75);
+            left: 0;
+            transform: translateX(0);
+        }
+    }
+    &__container{
+        margin-top: 30px;
+        color: $grey-color;
+        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border-bottom: 1px solid $text-color-light;
+        padding-bottom: 60px;
+        @include screen(md){
+            grid-template-columns: 1fr;
+        }
+    }
+    &__form{
+        grid-column: 1 / 3;
+        &-text{
+            margin-bottom: 50px;
+        }
+        &-row{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 30px;
+            @include screen(sm){
+                grid-template-columns: 1fr;
+            }
+            input{
+                padding: 8px 15px;
+                outline: none;
+            }
+            textarea{
+                grid-column: 1 / 3;
+                padding: 8px 15px;
+                margin-top: 12px;
+                height: 105px;
+                outline: none;
+            }
+        }
+        &-btn button{
+            padding: 16px 36px;
+            border: 2px solid $white-color;
+            border-radius: 999px;
+            background: none;
+            display: inline-block;
+            color: $white-color;
+            text-transform: uppercase;
+            margin-top: 35px;
+            @include screen(sm){
+                padding: 12px 30px;
+            }
+        }
+    }
+    &__info{
+        padding-left: 100px;
+        @include screen(lg){
+            padding-left: 30px;
+        }
+        @include screen(md){
+            padding-left: 0;
+            margin-top: 40px;
+        }
+        
+        &-title{
+            margin-bottom: 50px;
+            font-weight: 600;
+            @include screen(md){
+                margin-bottom: 20px;
+            }
+        }
+        &-item{
+            margin-bottom: 20px;
+            
+            h5{
+                font-size: 15px;
+                margin-bottom: 10px;
+                i{
+                    margin-right: 10px;
+                }
+            }
+            p{
+                color: $text-color-light;
+                font-family: sans-serif;
+            }
+        }
+    }
+    &__sci{
+        text-align: center;
+        padding-top: 40px;
+        &-link{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            
+            border: 2px solid $white-color;
+            border-radius: 50%;
+            color: $white-color;
+            text-decoration: none;
+            font-size: 20px;
+            display: inline-block;
+            margin: 0 15px;
+            i{
+                line-height: 50px;
+            }
+        }
+    }
+}
